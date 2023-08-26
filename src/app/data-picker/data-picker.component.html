@@ -1,0 +1,9 @@
+
+<button mat-fab extended color="primary" class="calendar-buttton" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+    Create
+</button>
+
+<mat-card class="calendar-card">
+    <mat-calendar [(selected)]="selected" (click)="daySelected()"></mat-calendar>
+</mat-card>

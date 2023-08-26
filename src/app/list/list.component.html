@@ -1,0 +1,31 @@
+<h1>
+  {{currentlyDay}} th, {{monthConvert(currentlyMonth)}}, {{currentlyYear}}
+</h1>
+<div class="list">
+    
+    <table mat-table [dataSource]="dataSource" class="table">
+
+        <!-- Hour Column -->
+        <ng-container matColumnDef="hour">
+          <th mat-header-cell *matHeaderCellDef> Hour </th>
+          <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+        </ng-container>
+      
+        <!-- Task Column -->
+        <ng-container matColumnDef="task" >
+          <th mat-header-cell *matHeaderCellDef > Task </th>
+          <td mat-cell *matCellDef="let element" cdkDrag (cdkDragEnded)="onDragEnded($event)" > 
+            <div class="drag-box" cdkDragHandle *ngIf="element.task">
+              <p class="w-50">{{element.task}} </p>
+              <button type="button" (click)="delete($event, element.task)" mat-mini-fab  color="warn"><mat-icon>delete</mat-icon></button>
+            </div> 
+          </td>
+          
+          
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+

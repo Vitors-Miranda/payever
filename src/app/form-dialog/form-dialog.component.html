@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add appointment in {{data.day}}th</h1>
+<form class="example-form" (submit)="sendForm($event)">
+<div mat-dialog-content>
+    <mat-form-field class="w-100">
+      <mat-label>Title</mat-label>
+      <input matInput #input placeholder="Type de title" name="title" [(ngModel)] = "form.title" required maxlength="10">
+      <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Time</mat-label>
+      <input type="time" name="time" matInput placeholder="Select the time"  [(ngModel)] = "form.time" required>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial color="primary" type="submit"  *ngIf="form.title">Salvar</button>
+  </div>
+</form>
